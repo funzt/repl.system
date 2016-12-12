@@ -8,11 +8,10 @@ Reloaded workflow development tool for systems built with [component](https://gi
 
 1. Invoke `set-system-to-load!` with a system map representing unloaded state.
 2. Invoke `(reset)` whenever you want a full stop/code reload/start
-3. Goto 1 wehenever you want to spin up a different system
+3. Goto 1 when you need to spin up a different system
 
-- `funzt.repl.system/system` has a `:system` entry with a running or stopped system.  This is where you access runtime instances of loaded components.  Access runtime facilities for dev use via `(get-in funzt.repl.system/system [:system <keyword-of-component-you-want>])`.  We recommend to set up little getters fn0s in your dev namespace for quicker access.
-- You may explicitly use `start` and `stop` instead of `reset` but usually won't have to.
-- `funzt.repl.system/system` has a `:status` map with `:started?` and `:stopped?` keys.  Usually you don't need it.
+## Accessing runtime instances
+`funzt.repl.system/system` has a `:system` entry with a running or stopped system.  This is where you access runtime instances of loaded components.  Access runtime facilities for dev use via `(get-in funzt.repl.system/system [:system <keyword-of-component-you-want>])`.  We recommend to set up little getters fn0s in your dev namespace for quicker access.
 
 ## What if `reset` fails?
 
@@ -20,11 +19,15 @@ If `reset` fails due to bad code you should fix your code and hit `reset` again.
 
 ## `clojure.tools.namespace.repl` gotcha
 
-Sometimes `clojure.tools.namespace.repl` which is used to handle code reloading finds too much code like generated ClojureScript source on the classpath. Use `clojure.tools.namespace.repl/set-refresh-dirs` to narrow down the source pathes you want reloaded.
+Sometimes `clojure.tools.namespace.repl` finds too much code like generated ClojureScript source on the classpath. Use `clojure.tools.namespace.repl/set-refresh-dirs` to narrow down the source pathes you want reloaded.
+
+## Other features
+- You may explicitly use `start` and `stop` instead of `reset` but usually won't have to.
+- `funzt.repl.system/system` has a `:status` map with `:started?` and `:stopped?` keys.  Usually you don't need it.
 
 ## Similar tools
 
-We use this tool at [funzt.jetzt](http://funzt.jetzt) because it does as little as possible to provide a smooth reloaded workflow.  At the time we wrote this there were no similar tools.  Similar tools nowaday have features beyond our requirement and require more care than just invoking `(reset)`.
+We use this tool at [funzt.jetzt](http://funzt.jetzt) because it does as little as possible to provide a smooth reloaded workflow.  At the time we wrote this there were no similar tools.  Similar tools nowadays have features beyond our requirement and they require more work than just invoking `(reset)` from us.
 
 ## License
 
