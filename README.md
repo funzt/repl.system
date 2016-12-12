@@ -11,7 +11,7 @@ Reloaded workflow development tool for systems built with [component](https://gi
 3. Goto 1 when you need to spin up a different system
 
 ## Accessing runtime instances
-`funzt.repl.system/system` has a `:system` entry with a running or stopped system.  This is where you access runtime instances of loaded components.  Access runtime facilities for dev use via `(get-in funzt.repl.system/system [:system <keyword-of-component-you-want>])`.  We recommend to set up little getters fn0s in your dev namespace for quicker access.
+`funzt.repl.system/system` has a `:system` entry with a running or stopped system.  This is where you access runtime instances of loaded components.  Access runtime facilities for dev use via `(get-in funzt.repl.system/system [:system <keyword-of-component-you-want>])`.  We recommend to set up little getter fn0s in your dev namespace for quicker access.
 
 ## What if `reset` fails?
 
